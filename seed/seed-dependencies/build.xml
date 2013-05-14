@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="build" basedir="." default="build">
+
+	<description>
+		<!-- ==\_/========================================================== -->
+		<!--  \(_)/                                                          -->
+		<!--  -(_)-                                                          -->
+		<!--  /(_)\                                                          -->
+		<!-- =============================================================== -->
+		<!--                                                                 -->
+		<!-- Script for managing JavaScript libraries as Maven dependnecies. -->
+		<!--                                                                 -->
+		<!-- @author: Jose Badeau, jose.badeau@gmail.com                     -->
+		<!--                                                                 -->
+		<!-- =============================================================== -->
+	</description>
+
+	<!-- =================================================================== -->
+	<!-- Properties.                                                         -->
+	<!-- =================================================================== -->
+	<property name="maven_exec" value="mvn.bat" />
+	<property name="maven_repo" value="D:/Data/Maven/repo" />
+	<property name="maven_goal" value="install:install-file" />
+	<property name="source" value="src/main/javascript" />
+	<property name="target" value="target/lib" />
+
+	<path id="runtime_classpath">
+		<pathelement location="${maven_repo}/org/apache/maven/plugins/maven-antrun-plugin/1.7/maven-antrun-plugin-1.7.jar" />
+		<pathelement location="${maven_repo}/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar" />
+		<pathelement location="${maven_repo}/org/apache/maven/maven-ant-tasks/2.1.3/maven-ant-tasks-2.1.3.jar" />
+		<pathelement location="${maven_repo}/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar" />
+		<pathelement location="${maven_repo}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar" />
+		<pathelement location="${maven_repo}/org/python/jython-standalone/2.5.2/jython-standalone-2.5.2.jar" />
+		<pathelement location="${maven_repo}/org/apache/ant/ant-apache-bsf/1.7.0/ant-apache-bsf-1.7.0.jar" />
+		<pathelement location="${maven_repo}/bsf/bsf/2.4.0/bsf-2.4.0.jar" />
+		<pathelement location="${maven_repo}/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar" />
+		<pathelement location="${maven_repo}/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar" />
+		<pathelement location="${maven_repo}/org/apache/ant/ant/1.8.2/ant-1.8.2.jar" />
+		<pathelement location="${maven_repo}/org/apache/ant/ant-launcher/1.8.2/ant-launcher-1.8.2.jar" />
+	</path>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="runtime_classpath" />
+	<taskdef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="runtime_classpath" />
+
+	<!-- list of JavaScript dependencies -->
+	<property name="list">
+		com.cujojs:curl:0.7.3,
+		com.cujojs:wire:0.9.4,
+		com.cujojs:cola:0.1.0-SNAPSHOT,
+		com.cujojs:when:2.0.1,
+		com.cujojs:meld:1.3.0,
+		com.cujojs:poly:0.5.1
+	</property>
+
+	<!-- =================================================================== -->
+	<!-- Public Targets                                                      -->
+	<!-- =================================================================== -->
+	<target name="build" depends="package, install" description="Install JavaScript dependencies into the local maven repository." />
+
+	<!-- =================================================================== -->
+	<!-- Private Targets:                                                    -->
+	<!-- =================================================================== -->
+	<target name="package">
+		<forEachDependency list="${list}">
+			<do>
+				<zip basedir="${source}" includes="${artifactId}/**" destfile="${target}/${artifactId}.jar" whenempty="fail" />
+			</do>
+		</forEachDependency>
+	</target>
+
+	<target name="install">
+		<forEachDependency list="${list}">
+			<do>
+				<echo message="${maven_exec} ${maven_goal} -Dfile=${target}/${artifactId}.jar -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dclassifier=javascript -Dpackaging=jar" />
+				<exec executable="${maven_exec}" failifexecutionfails="true" failonerror="true">
+					<arg value="${maven_goal}" />
+					<arg value="-Dfile=${target}/${artifactId}.jar" />
+					<arg value="-DlocalRepositoryPath=${maven_repo}" />
+					<arg value="-DgroupId=${groupId}" />
+					<arg value="-DartifactId=${artifactId}" />
+					<arg value="-Dversion=${version}" />
+					<arg value="-Dclassifier=js" />
+					<arg value="-Dpackaging=jar" />
+				</exec>
+			</do>
+		</forEachDependency>
+	</target>
+
+	<macrodef name="forEachDependency" description="Divides up the list attribute into tupels consisting of groupId, artifactId and version">
+		<attribute name="list" />
+		<element name="do" optional="yes" />
+		<sequential>
+			<for list="@{list}" delimiter="," param="letter" trim="true">
+				<sequential>
+					<property name="regex" value="([^:]*):([^:]*):([^:]*)" />
+					<propertyregex property="groupId" input="@{letter}" regexp="${regex}" select="\1" casesensitive="false" override="true" />
+					<propertyregex property="artifactId" input="@{letter}" regexp="${regex}" select="\2" casesensitive="false" override="true" />
+					<propertyregex property="version" input="@{letter}" regexp="${regex}" select="\3" casesensitive="false" override="true" />
+					<echo>groupId: ${groupId} artifactId: ${artifactId} version: ${version}</echo>
+					<do />
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
+
+</project>

@@ -1,0 +1,10 @@
+**/.settings
+
+**/.project
+
+**/.classpath
+**/*.class
+**/target
+**/build
+**/classes
+**/build
