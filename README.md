@@ -16,3 +16,4 @@ In otherwords use Eclipse Juno SR2
 ## Comming Soon...
 * Integration of Jasmine + PhantomJS for development and build time unit-testing
 * Integration of GEB (WebDriver) for automated browser-testing
+* Link to cujojs libs rather than checkin.
