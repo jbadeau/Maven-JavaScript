@@ -9,8 +9,8 @@
 	</parent>
 
 	<artifactId>seed-javascript</artifactId>
-	<name>App</name>
-	<description>Seed JavaScript</description>
+	<name>Seed JavaScript</name>
+	<description>Seed JavaScript module.</description>
 
 	<dependencies>
 		<!-- cujojs -->

@@ -10,8 +10,8 @@
 
 	<artifactId>seed-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>WebApp</name>
-	<description>Seed Web-Application</description>
+	<name>Seed Web-Application</name>
+	<description>Seed Web-Application module.</description>
 
 	<dependencies>
 		<!-- Seed -->

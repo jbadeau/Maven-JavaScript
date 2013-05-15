@@ -10,8 +10,8 @@
 
 	<artifactId>seed-dependencies</artifactId>
 	<packaging>pom</packaging>
-	<name>Dependencies</name>
-	<description>Seed Dependencies</description>
+	<name>Seed Dependencies</name>
+	<description>Seed JavaScript Dependencies module.</description>
 
 
 	<build>
