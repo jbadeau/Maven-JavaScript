@@ -9,7 +9,7 @@
 		<!--  /(_)\                                                          -->
 		<!-- =============================================================== -->
 		<!--                                                                 -->
-		<!-- Script for managing JavaScript libraries as Maven dependnecies. -->
+		<!-- Script for installing JavaScript libraries into Maven.          -->
 		<!--                                                                 -->
 		<!-- @author: Jose Badeau, jose.badeau@gmail.com                     -->
 		<!--                                                                 -->
