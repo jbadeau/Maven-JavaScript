@@ -8,9 +8,9 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>seed-app</artifactId>
+	<artifactId>seed-javascript</artifactId>
 	<name>App</name>
-	<description>Seed JavaScript Application</description>
+	<description>Seed JavaScript</description>
 
 	<dependencies>
 		<!-- cujojs -->
@@ -49,9 +49,9 @@
 	<build>
 		<sourceDirectory>src/main/javascript</sourceDirectory>
 		<testSourceDirectory>src/test/javascript</testSourceDirectory>
-
+		
 		<plugins>
-			<!--plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -60,6 +60,13 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<classifier>js</classifier>
+				</configuration>
+			</plugin>
+			<!--plugin>
 				<groupId>com.github.searls</groupId>
 				<artifactId>jasmine-maven-plugin</artifactId>
 				<executions>

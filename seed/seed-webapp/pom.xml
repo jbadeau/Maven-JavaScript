@@ -45,9 +45,12 @@
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
 		</dependency>
+		<!-- Seed -->
 		<dependency>
 			<groupId>com.cujojs</groupId>
-			<artifactId>seed-app</artifactId>
+			<artifactId>seed-javascript</artifactId>
+			<classifier>js</classifier>
+			<version>${project.version}</version>
 		</dependency>
 		<!-- Spring -->
 		<dependency>

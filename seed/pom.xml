@@ -11,7 +11,7 @@
 
 	<modules>
 		<module>seed-dependencies</module>
-		<module>seed-app</module>
+		<module>seed-javascript</module>
 		<module>seed-webapp</module>
 	</modules>
 
@@ -59,11 +59,6 @@
 				<artifactId>poly</artifactId>
 				<classifier>js</classifier>
 				<version>0.5.1</version>
-			</dependency>
-			<dependency>
-				<groupId>com.cujojs</groupId>
-				<artifactId>seed-app</artifactId>
-				<version>${project.version}</version>
 			</dependency>
 			<!-- Spring -->
 			<dependency>
@@ -152,6 +147,11 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
