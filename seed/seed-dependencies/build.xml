@@ -19,7 +19,12 @@
 	<!-- =================================================================== -->
 	<!-- Properties.                                                         -->
 	<!-- =================================================================== -->
-	<property name="maven_exec" value="mvn" />
+	<condition property="maven_exec" value="mvn">
+		<os family="unix" />
+	</condition>
+	<condition property="maven_exec" value="mvn.bat">
+		<os family="windows" />
+	</condition>
 	<property name="maven_goal" value="install:install-file" />
 	<property name="source" value="src/main/javascript" />
 	<property name="target" value="target/lib" />
