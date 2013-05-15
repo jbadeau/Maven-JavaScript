@@ -44,6 +44,12 @@
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
 		</dependency>
+		<dependency>
+			<groupId>com.pivotallabs</groupId>
+			<artifactId>jasmine</artifactId>
+			<classifier>js</classifier>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

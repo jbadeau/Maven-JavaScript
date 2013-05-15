@@ -34,7 +34,8 @@
 		com.cujojs:cola:0.1.0-SNAPSHOT,
 		com.cujojs:when:2.0.1,
 		com.cujojs:meld:1.3.0,
-		com.cujojs:poly:0.5.1
+		com.cujojs:poly:0.5.1,
+		com.pivotallabs:jasmine:1.3.1
 	</property>
 
 	<!-- =================================================================== -->

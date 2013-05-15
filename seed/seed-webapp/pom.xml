@@ -14,37 +14,6 @@
 	<description>Seed Web-Application</description>
 
 	<dependencies>
-		<!-- cujojs -->
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>curl</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>wire</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>cola</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>when</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>meld</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
-			<artifactId>poly</artifactId>
-			<classifier>js</classifier>
-		</dependency>
 		<!-- Seed -->
 		<dependency>
 			<groupId>com.cujojs</groupId>
