@@ -7,18 +7,18 @@
 	<display-name>seed-webapp</display-name>
 
 	<servlet>
-		<servlet-name>staticResourceServlet</servlet-name>
+		<servlet-name>resourceServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>namespace</param-name>
-			<param-value>spring/static-resource-context</param-value>
+			<param-value>spring/resource-context</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>staticResourceServlet</servlet-name>
-		<url-pattern>/lib/*</url-pattern>
+		<servlet-name>resourceServlet</servlet-name>
+		<url-pattern>/static/*</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

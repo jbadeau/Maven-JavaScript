@@ -19,6 +19,7 @@
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.2.2.RELEASE</org.springframework-version>
 		<org.slf4j-version>1.6.1</org.slf4j-version>
+		<ch.qos.ch.qos.logback-version>0.9.26</ch.qos.ch.qos.logback-version>
 	</properties>
 
 	<dependencyManagement>
@@ -85,22 +86,29 @@
 				<version>${org.slf4j-version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${org.slf4j-version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${org.slf4j-version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>1.2.16</version>
-				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${org.slf4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${ch.qos.ch.qos.logback-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${ch.qos.ch.qos.logback-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-access</artifactId>
+				<version>${ch.qos.ch.qos.logback-version}</version>
 			</dependency>
 			<!-- Testing -->
 			<dependency>

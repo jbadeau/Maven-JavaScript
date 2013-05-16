@@ -10,6 +10,6 @@
 	<mvc:annotation-driven />
 
 	<!-- no cache for development -->
-	<mvc:resources mapping="/**" location="classpath:/" cache-period="0" />
+	<mvc:resources mapping="/lib/**" location="classpath:/" cache-period="0" />
 
 </beans>
