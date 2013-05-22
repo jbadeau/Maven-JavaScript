@@ -1,5 +1,3 @@
-packages: [
-	{ name: 'cola', location: 'lib/cola', main: 'cola' },
-	{ name: 'when', location: 'lib/when', main: 'when' },
-	{ name: 'meld', location: 'lib/meld', main: 'meld' }
-]
+paths: {
+    "welcome" : "welcome"
+}

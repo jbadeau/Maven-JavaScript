@@ -60,20 +60,19 @@
 	</dependencies>
 
 	<build>
-
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/javascript</directory>
-			</resource>
-			<resource>
-				<directory>src/test/javascript</directory>
-			</resource>
-		</resources>
+		<sourceDirectory>src/main/javascript</sourceDirectory>
+		<testSourceDirectory>src/test/javascript</testSourceDirectory>
 
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<sourceIncludes>
+						<sourceInclude>**/*.js</sourceInclude>
+					</sourceIncludes>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -107,7 +106,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--plugin>
+			<plugin>
 				<groupId>com.github.searls</groupId>
 				<artifactId>jasmine-maven-plugin</artifactId>
 				<executions>
@@ -119,17 +118,14 @@
 				</executions>
 				<configuration>
 					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
-					<jsSrcDir>${project.basedir}/src/main/javascript</jsSrcDir>
+					<jsSrcDir>${project.build.directory}/lib</jsSrcDir>
 					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
 					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
 					<preloadSources>
 						<source>require/require.js</source>
 					</preloadSources>
-					<specIncludes>
-						<include>welcome/ExampleTest.js</include>
-					</specIncludes>
 				</configuration>
-			</plugin-->
+			</plugin>
 		</plugins>
 
 	</build>
