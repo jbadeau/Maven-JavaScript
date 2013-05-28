@@ -44,6 +44,13 @@
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
 		</dependency>
+		<!-- test -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>require</artifactId>
+			<classifier>js</classifier>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -74,6 +81,17 @@
 				<configuration>
 					<classifier>js</classifier>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
