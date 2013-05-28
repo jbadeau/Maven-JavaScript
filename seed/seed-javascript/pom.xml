@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -92,6 +93,19 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+					<srcDirectoryName>webjars</srcDirectoryName>
+					<jsSrcDir>${project.basedir}/src/main/javascript</jsSrcDir>
+					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
+					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
+					<preloadSources>
+						<source>webjars/require/2.1.6/require.js</source>
+					</preloadSources>
+					<specIncludes>
+						<include>FooSpec.js</include>
+					</specIncludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
