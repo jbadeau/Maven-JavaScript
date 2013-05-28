@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -15,47 +15,34 @@
 	<dependencies>
 		<!-- cujojs -->
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>curl</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>wire</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>cola</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>when</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>meld</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.cujojs</groupId>
+			<groupId>org.webjars</groupId>
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
-		</dependency>
-		<!-- Testing -->
-		<dependency>
-			<groupId>org.requirejs</groupId>
-			<artifactId>require</artifactId>
-			<classifier>js</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.pivotallabs</groupId>
-			<artifactId>jasmine</artifactId>
-			<classifier>js</classifier>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -88,46 +75,7 @@
 					<classifier>js</classifier>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.github.searls</groupId>
-				<artifactId>jasmine-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
-					<jsSrcDir>${project.build.directory}/lib</jsSrcDir>
-					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
-					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
-					<preloadSources>
-						<source>require/require.js</source>
-					</preloadSources>
-				</configuration>
-			</plugin>
 		</plugins>
-
 	</build>
 
 </project>
