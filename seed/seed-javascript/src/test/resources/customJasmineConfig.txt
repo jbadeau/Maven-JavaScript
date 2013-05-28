@@ -1,11 +1,11 @@
 packages: [
 	// Add third-party packages here
-	{ name: 'curl', location: 'curl/0.7.3/src/curl' },
-	{ name: 'wire', location: 'wire/0.9.4', main: 'wire' },
-	{ name: 'cola', location: 'cola/0.1.0-SNAPSHOT', main: 'cola' },
-	{ name: 'when', location: 'when/2.0.1', main: 'when' },
-	{ name: 'meld', location: 'meld/1.3.0', main: 'meld' },
-	{ name: 'poly', location: 'poly/0.5.1' },
+	{ name: 'curl', location: 'curl/src/curl' },
+	{ name: 'wire', location: 'wire', main: 'wire' },
+	{ name: 'cola', location: 'cola', main: 'cola' },
+	{ name: 'when', location: 'when', main: 'when' },
+	{ name: 'meld', location: 'meld', main: 'meld' },
+	{ name: 'poly', location: 'poly' },
 	// Add app packages here
 	{ name: 'welcome', location: 'static/lib/welcome' }
 ]

@@ -16,38 +16,38 @@
 	<dependencies>
 		<!-- cujojs -->
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>curl</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>wire</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>cola</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>when</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>meld</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>com.cujojs</groupId>
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<!-- test -->
 		<dependency>
-			<groupId>org.webjars</groupId>
+			<groupId>org.requirejs</groupId>
 			<artifactId>require</artifactId>
 			<classifier>js</classifier>
 			<scope>test</scope>
@@ -95,12 +95,12 @@
 				</executions>
 				<configuration>
 					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
-					<srcDirectoryName>webjars</srcDirectoryName>
+					<srcDirectoryName>.</srcDirectoryName>
 					<jsSrcDir>${project.basedir}/src/main/javascript</jsSrcDir>
 					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
 					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
 					<preloadSources>
-						<source>webjars/require/2.1.6/require.js</source>
+						<source>require/require.js</source>
 					</preloadSources>
 					<specIncludes>
 						<include>FooSpec.js</include>
