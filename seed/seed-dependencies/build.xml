@@ -40,7 +40,8 @@
 		org.webjars:cola:0.1.0-SNAPSHOT,
 		org.webjars:when:2.0.1,
 		org.webjars:meld:1.3.0,
-		org.webjars:poly:0.5.1
+		org.webjars:poly:0.5.1,
+		org.webjars:require:2.1.6
 	</property>
 
 	<!-- =================================================================== -->
