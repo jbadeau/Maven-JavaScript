@@ -8,7 +8,7 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 
 ## Features
 * Maven based JavaScript dependency management
-* Keep JavaSCript code separate from web application code (html, css, img...)
+* Keep JavaScript code separate from web application code (html, css, img...)
 * Run JavaScript Jasmine unit tests without unpacking dependencies
 * Run JavaScript web application without unpacking dependencies
 
