@@ -15,6 +15,6 @@
 		preloads: ['poly/all']
 	};
 
-	curl(config, ['wire!app/main']);
+	curl(config, ['wire!seed/main']);
 
 })(curl);
