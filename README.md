@@ -1,12 +1,12 @@
 maven-cujojs-seed
 =================
 
-A Maven/Eclipse setup for working with JavaScript.
+A Maven + Eclipse setup for working with JavaScript.
 
 ## Description
 This is an example project for working with Eclipse, Maven and JavaScript. One of the main goals is to use JavaScript as normal Maven dependencies without copying or unpacking source files. The cujojs seed project is used as a template.
 
-## Prerequisites
+## Features
 * Maven based JavaScript dependency management
 * Keep JavaSCript code separate from web application code (html, css, img...)
 * Run JavaScript Jasmine unit tests without unpacking dependencies
