@@ -84,7 +84,7 @@
 					<classifier>js</classifier>
 				</configuration>
 			</plugin>
-			<!--plugin>
+			<plugin>
 				<groupId>com.github.searls</groupId>
 				<artifactId>jasmine-maven-plugin</artifactId>
 				<executions>
@@ -107,7 +107,7 @@
 					</specIncludes>
 					<keepServerAlive>false</keepServerAlive>
 				</configuration>
-			</plugin-->
+			</plugin>
 		</plugins>
 	</build>
 
