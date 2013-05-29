@@ -116,6 +116,7 @@
 					<specIncludes>
 						<include>**/*Spec.js</include>
 					</specIncludes>
+					<keepServerAlive>false</keepServerAlive>
 				</configuration>
 			</plugin>
 		</plugins>
