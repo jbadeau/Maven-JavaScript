@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cujojs</groupId>
@@ -61,25 +60,6 @@
 				<classifier>js</classifier>
 				<version>0.5.1</version>
 			</dependency>
-			<!-- test -->
-			<dependency>
-				<groupId>org.requirejs</groupId>
-				<artifactId>require</artifactId>
-				<classifier>js</classifier>
-				<version>2.1.6</version>
-			</dependency>
-			<dependency>
-				<groupId>com.jquery</groupId>
-				<artifactId>jquery</artifactId>
-				<classifier>js</classifier>
-				<version>1.10.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.pivotallabs</groupId>
-				<artifactId>jasmine-jquery</artifactId>
-				<classifier>js</classifier>
-				<version>1.5.1</version>
-			</dependency>
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -128,6 +108,80 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-access</artifactId>
 				<version>${ch.qos.ch.qos.logback-version}</version>
+			</dependency>
+			<!-- unit test -->
+			<dependency>
+				<groupId>org.requirejs</groupId>
+				<artifactId>require</artifactId>
+				<classifier>js</classifier>
+				<version>2.1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jquery</groupId>
+				<artifactId>jquery</artifactId>
+				<classifier>js</classifier>
+				<version>1.10.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pivotallabs</groupId>
+				<artifactId>jasmine-jquery</artifactId>
+				<classifier>js</classifier>
+				<version>1.5.1</version>
+			</dependency>
+			<!-- ui test -->
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>2.1.3</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.spockframework</groupId>
+				<artifactId>spock-core</artifactId>
+				<version>0.7-groovy-2.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.gebish</groupId>
+				<artifactId>geb-spock</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-ie-driver</artifactId>
+				<version>2.33.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-firefox-driver</artifactId>
+				<version>2.33.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-chrome-driver</artifactId>
+				<version>2.33.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-safari-driver</artifactId>
+				<version>2.33.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-support</artifactId>
+				<version>2.33.0</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -248,8 +302,12 @@
 					<artifactId>jasmine-maven-plugin</artifactId>
 					<version>1.3.1.3-CGA</version>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.codehaus.gmaven</groupId>
+					<artifactId>gmaven-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -293,6 +351,19 @@
 												copy-dependencies
 											</goal>
 											<goal>unpack-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.gmaven</groupId>
+										<artifactId>gmaven-plugin</artifactId>
+										<versionRange>[1.5,)</versionRange>
+										<goals>
+											<goal>testCompile</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
