@@ -27,6 +27,7 @@
 	</condition>
 	<property name="maven_goal" value="install:install-file" />
 	<property name="source" value="src/main/javascript" />
+	<property name="resource" value="src/main/resources" />
 	<property name="tmp" value="target/tmp" />
 	<property name="target" value="target/lib" />
 
@@ -43,7 +44,8 @@
 		com.cujojs:poly:0.5.1,
 		org.requirejs:require:2.1.6,
 		com.jquery:jquery:1.10.0,
-		com.pivotallabs:jasmine-jquery:1.5.1
+		com.pivotallabs:jasmine:1.3.1,
+		com.github:jasmine-jquery:1.5.1
 	</property>
 
 	<!-- =================================================================== -->
@@ -71,7 +73,7 @@
 	<target name="install">
 		<forEachDependency list="${list}">
 			<do>
-				<echo message="${maven_exec} ${maven_goal} -Dfile=${target}/${artifactId}.jar -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dclassifier=javascript -Dpackaging=jar" />
+				<echo message="${maven_exec} ${maven_goal} -Dfile=${target}/${artifactId}.jar -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dclassifier=javascript -Dpackaging=jar -DpomFile=${resource}/${artifactId}/pom.xml" />
 				<exec executable="${maven_exec}" failifexecutionfails="true" failonerror="true">
 					<arg value="${maven_goal}" />
 					<arg value="-Dfile=${target}/${artifactId}.jar" />
@@ -80,6 +82,7 @@
 					<arg value="-Dversion=${version}" />
 					<arg value="-Dclassifier=js" />
 					<arg value="-Dpackaging=jar" />
+					<arg value="-DpomFile=${resource}/${artifactId}/pom.xml" />
 				</exec>
 			</do>
 		</forEachDependency>

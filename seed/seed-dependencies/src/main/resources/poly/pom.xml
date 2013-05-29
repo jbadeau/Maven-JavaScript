@@ -1,0 +1,11 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cujojs</groupId>
+	<artifactId>poly</artifactId>
+	<version>0.5.1</version>
+	<packaging>jar</packaging>
+	<name>poly</name>
+	<description>Small, fast, awesome. The only ES5-ish set of polyfills (shims) you can mix-and-match because they're individual AMD modules.</description>
+
+</project>

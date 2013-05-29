@@ -1,8 +1,0 @@
-{
-	"name": "cram",
-	"version": "0.7.1",
-	"dependencies": {
-		"when": "~1",
-		"curl": "~0.7"
-	}
-}
