@@ -7,11 +7,11 @@
 	</appender>
 
 	<logger name="org.springframework">
-		<level value="ALL" />
+		<level value="ERROR" />
 	</logger>
 
 	<root>
-		<level value="ALL" />
+		<level value="ERROR" />
 		<appender-ref ref="CONSOLE" />
 	</root>
 

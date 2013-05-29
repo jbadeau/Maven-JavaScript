@@ -52,6 +52,18 @@
 			<classifier>js</classifier>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.jquery</groupId>
+			<artifactId>jquery</artifactId>
+			<classifier>js</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.pivotallabs</groupId>
+			<artifactId>jasmine-jquery</artifactId>
+			<classifier>js</classifier>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -95,7 +107,7 @@
 				</executions>
 				<configuration>
 					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
-					<srcDirectoryName>.</srcDirectoryName>
+					<srcDirectoryName>seed</srcDirectoryName>
 					<jsSrcDir>${project.basedir}/src/main/javascript</jsSrcDir>
 					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
 					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
@@ -103,7 +115,7 @@
 						<source>require/require.js</source>
 					</preloadSources>
 					<specIncludes>
-						<include>FooSpec.js</include>
+						<include>**/*Spec.js</include>
 					</specIncludes>
 				</configuration>
 			</plugin>

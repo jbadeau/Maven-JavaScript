@@ -1,5 +1,5 @@
 define({ // Wire spec
-
+	
 	root: { $ref: 'dom.first!body' },
 
 	controller: {

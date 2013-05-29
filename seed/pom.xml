@@ -61,11 +61,24 @@
 				<classifier>js</classifier>
 				<version>0.5.1</version>
 			</dependency>
+			<!-- test -->
 			<dependency>
 				<groupId>org.requirejs</groupId>
 				<artifactId>require</artifactId>
 				<classifier>js</classifier>
 				<version>2.1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jquery</groupId>
+				<artifactId>jquery</artifactId>
+				<classifier>js</classifier>
+				<version>1.10.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pivotallabs</groupId>
+				<artifactId>jasmine-jquery</artifactId>
+				<classifier>js</classifier>
+				<version>1.5.1</version>
 			</dependency>
 			<!-- Spring -->
 			<dependency>
@@ -115,12 +128,6 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-access</artifactId>
 				<version>${ch.qos.ch.qos.logback-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.requirejs</groupId>
-				<artifactId>require</artifactId>
-				<classifier>js</classifier>
-				<version>2.1.6</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
