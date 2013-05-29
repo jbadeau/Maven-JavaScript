@@ -107,7 +107,6 @@
 				</executions>
 				<configuration>
 					<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
-					<srcDirectoryName>seed</srcDirectoryName>
 					<jsSrcDir>${project.basedir}/src/main/javascript</jsSrcDir>
 					<jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
 					<customRunnerConfiguration>${project.basedir}/src/test/resources/customJasmineConfig.txt</customRunnerConfiguration>
