@@ -10,9 +10,9 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 * Maven based JavaScript dependency management
 * Transitive dependency support
 * Keep JavaScript code separate from web application code (html, css, img...)
-* Run JavaScript Jasmine unit tests without unpacking dependencies
+* Run unit tests without unpacking dependencies
 * Integration of GEB (WebDriver) for automated browser-testing
-* Run JavaScript web application without unpacking dependencies
+* Run web application without unpacking dependencies
 
 ## Prerequisites
 * eclipse version >= 4.2.1
