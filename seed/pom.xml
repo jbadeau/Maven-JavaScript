@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cujojs</groupId>
@@ -244,7 +243,7 @@
 	</repositories>
 
 	<pluginRepositories>
-		<pluginRepository>
+		<!--pluginRepository>
 			<id>moyrax-releases</id>
 			<name>Moyrax Artifactory</name>
 			<url>http://www.moyrax.com:8081/nexus/content/repositories/moyrax-releases/</url>
@@ -255,7 +254,7 @@
 			<releases>
 				<updatePolicy>never</updatePolicy>
 			</releases>
-		</pluginRepository>
+		</pluginRepository-->
 		<pluginRepository>
 			<id>pentaho</id>
 			<url>http://repository.pentaho.org/artifactory/pentaho/</url>
@@ -315,8 +314,12 @@
 					<artifactId>gmaven-plugin</artifactId>
 					<version>1.4</version>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>maven-jetty-plugin</artifactId>
+					<version>6.1.26</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -373,6 +376,19 @@
 										<versionRange>[1.4,)</versionRange>
 										<goals>
 											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.mortbay.jetty</groupId>
+										<artifactId>maven-jetty-plugin</artifactId>
+										<versionRange>[6.1.26,)</versionRange>
+										<goals>
+											<goal>deploy-war</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

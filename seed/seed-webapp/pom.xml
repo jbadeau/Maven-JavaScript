@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -104,6 +103,10 @@
 	</dependencies>
 
 	<build>
+
+		<sourceDirectory>src/main/groovy</sourceDirectory>
+		<testSourceDirectory>src/test/groovy</testSourceDirectory>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -116,15 +119,55 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/*Spec.*</include>
+							</includes>
+							<systemPropertyVariables>
+								<geb.build.baseUrl>http://google.com/ncr</geb.build.baseUrl>
+								<geb.build.reportsDir>target/test-reports/geb</geb.build.reportsDir>
+							</systemPropertyVariables>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
-					<includes>
-						<include>*Spec.*</include>
-					</includes>
-					<systemPropertyVariables>
-						<geb.build.baseUrl>http://google.com/ncr</geb.build.baseUrl>
-						<geb.build.reportsDir>target/test-reports/geb</geb.build.reportsDir>
-					</systemPropertyVariables>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>foo</stopKey>
+					<stopPort>9999</stopPort>
+					<contextPath>/</contextPath>
+					<webApp>${project.build.directory}/${project.build.finalName}</webApp>
+					<contextPath>/seed</contextPath>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deploy-war</goal>
+						</goals>
+						<configuration>
+							<scanIntervalSeconds>0</scanIntervalSeconds>
+							<daemon>true</daemon>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.gmaven</groupId>
