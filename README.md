@@ -11,7 +11,7 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 * Transitive dependency support
 * Keep JavaScript code separate from web application code (html, css, img...)
 * Run unit tests without unpacking dependencies
-* Integration of GEB (WebDriver) for automated browser-testing
+* Integration of GEB (WebDriver) for automated browser testing
 * Run web application without unpacking dependencies
 
 ## Prerequisites
