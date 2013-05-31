@@ -15,11 +15,12 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 * Run web application without unpacking dependencies
 
 ## Prerequisites
-* eclipse version >= 4.2.1
-* m2e - Maven Integration for Eclipse >= 1.3.0
-* m2e-wtp - Maven Integration for WTP >= 0.17.0
-
-In otherwords use Eclipse Juno SR2 and associated plug-ins
+* Eclipse 4.2.1 (Juno SR2)
+* Groovy Compiler 2.0 Feature
+* Groovy-Eclipse Feature
+* Groovy-Eclipse M2E integration
+* m2e - Maven Integration for Eclipse
+* m2e-wtp - Maven Integration for WTP (Incubation)
 
 ## Comming Soon...
 * Integration of code coverage
