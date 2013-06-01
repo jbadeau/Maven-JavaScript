@@ -146,7 +146,7 @@
 					<stopPort>9999</stopPort>
 					<contextPath>/</contextPath>
 					<webApp>${project.build.directory}/${project.build.finalName}</webApp>
-					<contextPath>/seed</contextPath>
+					<contextPath>/</contextPath>
 				</configuration>
 				<executions>
 					<execution>

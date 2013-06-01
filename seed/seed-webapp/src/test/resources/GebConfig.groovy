@@ -12,7 +12,7 @@ driver = { new FirefoxDriver() }
 
 environments {
 
- baseUrl = "http://localhost:8080/seed"
+ baseUrl = "http://localhost:8080/"
 	
  // run as “mvn -Dgeb.env=chrome test”
  // See: http://code.google.com/p/selenium/wiki/ChromeDriver
