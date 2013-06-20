@@ -35,19 +35,37 @@
 			<artifactId>poly</artifactId>
 			<classifier>js</classifier>
 		</dependency>
-		<!-- unit test -->
+		<dependency>
+			<groupId>com.cujojs</groupId>
+			<artifactId>rest</artifactId>
+			<classifier>js</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>polymer</artifactId>
+			<classifier>js</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.zurb</groupId>
+			<artifactId>foundation</artifactId>
+			<classifier>js</classifier>
+		</dependency>
 		<dependency>
 			<groupId>org.requirejs</groupId>
 			<artifactId>require</artifactId>
 			<classifier>js</classifier>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.jquery</groupId>
 			<artifactId>jquery</artifactId>
 			<classifier>js</classifier>
-			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.jtypes</groupId>
+			<artifactId>jtypes</artifactId>
+			<classifier>js</classifier>
+		</dependency>
+		<!-- unit test -->
 		<dependency>
 			<groupId>com.github</groupId>
 			<artifactId>jasmine-jquery</artifactId>

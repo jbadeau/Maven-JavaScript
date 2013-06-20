@@ -36,17 +36,22 @@
 
 	<!-- list of JavaScript dependencies -->
 	<property name="list">
-		com.cujojs:curl:0.7.4,
-		com.cujojs:wire:0.10.0,
-		com.cujojs:cola:0.1.3,
-		com.cujojs:when:2.1.1,
-		com.cujojs:meld:1.3.0,
-		com.cujojs:poly:0.5.2,
-		com.cujojs:cram:0.7.4,
-		org.requirejs:require:2.1.6,
-		com.jquery:jquery:1.10.0,
-		com.pivotallabs:jasmine:1.3.1,
-		com.github:jasmine-jquery:1.5.1
+		foundation,
+		jquery,
+		require,
+		r,
+		jtypes,
+		curl,
+		wire,
+		cola,
+		when,
+		meld,
+		poly,
+		rest,
+		cram,
+		polymer,
+		jasmine,
+		jasmine-jquery
 	</property>
 
 	<!-- =================================================================== -->
@@ -58,52 +63,30 @@
 	<!-- Private Targets:                                                    -->
 	<!-- =================================================================== -->
 	<target name="package">
-		<forEachDependency list="${list}">
-			<do>
-				<copy todir="${tmp}/META-INF/resources/${artifactId}">
-					<fileset dir="${source}/${artifactId}" />
+		<for list="${list}" delimiter="," param="artifactId" trim="true">
+			<sequential>
+				<copy todir="${tmp}/META-INF/resources/@{artifactId}">
+					<fileset dir="${source}/@{artifactId}" />
 				</copy>
-				<zip basedir="${tmp}" includes="*/**" destfile="${target}/${artifactId}.jar" whenempty="fail" />
+				<zip basedir="${tmp}" includes="*/**" destfile="${target}/@{artifactId}.jar" whenempty="fail" />
 				<delete includeEmptyDirs="true">
 					<fileset dir="${tmp}" />
 				</delete>
-			</do>
-		</forEachDependency>
+			</sequential>
+		</for>
 	</target>
 
 	<target name="install">
-		<forEachDependency list="${list}">
-			<do>
-				<echo message="${maven_exec} ${maven_goal} -Dfile=${target}/${artifactId}.jar -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=${version} -Dclassifier=javascript -Dpackaging=jar -DpomFile=${resource}/${artifactId}/pom.xml" />
+		<for list="${list}" delimiter="," param="artifactId" trim="true">
+			<sequential>
 				<exec executable="${maven_exec}" failifexecutionfails="true" failonerror="true">
 					<arg value="${maven_goal}" />
-					<arg value="-Dfile=${target}/${artifactId}.jar" />
-					<arg value="-DgroupId=${groupId}" />
-					<arg value="-DartifactId=${artifactId}" />
-					<arg value="-Dversion=${version}" />
+					<arg value="-Dfile=${target}/@{artifactId}.jar" />
 					<arg value="-Dclassifier=js" />
-					<arg value="-Dpackaging=jar" />
-					<arg value="-DpomFile=${resource}/${artifactId}/pom.xml" />
+					<arg value="-DpomFile=${resource}/@{artifactId}/pom.xml" />
 				</exec>
-			</do>
-		</forEachDependency>
+			</sequential>
+		</for>
 	</target>
-
-	<macrodef name="forEachDependency" description="Divides up the list attribute into tupels consisting of groupId, artifactId and version">
-		<attribute name="list" />
-		<element name="do" optional="yes" />
-		<sequential>
-			<for list="@{list}" delimiter="," param="letter" trim="true">
-				<sequential>
-					<property name="regex" value="([^:]*):([^:]*):([^:]*)" />
-					<propertyregex property="groupId" input="@{letter}" regexp="${regex}" select="\1" casesensitive="false" override="true" />
-					<propertyregex property="artifactId" input="@{letter}" regexp="${regex}" select="\2" casesensitive="false" override="true" />
-					<propertyregex property="version" input="@{letter}" regexp="${regex}" select="\3" casesensitive="false" override="true" />
-					<echo>groupId: ${groupId} artifactId: ${artifactId} version: ${version}</echo>
-					<do />
-				</sequential>
-			</for>
-		</sequential>
-	</macrodef>
 
 </project>
