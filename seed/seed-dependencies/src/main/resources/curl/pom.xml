@@ -3,7 +3,7 @@
 
 	<groupId>com.cujojs</groupId>
 	<artifactId>curl</artifactId>
-	<version>0.7.3</version>
+	<version>0.7.4</version>
 	<packaging>jar</packaging>
 	<name>curl</name>
 	<description>A small, fast module and resource loader with dependency management. (AMD, CommonJS Modules/1.1, CSS, HTML, etc.)</description>

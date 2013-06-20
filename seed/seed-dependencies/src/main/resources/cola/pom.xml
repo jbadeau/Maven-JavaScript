@@ -3,7 +3,7 @@
 
 	<groupId>com.cujojs</groupId>
 	<artifactId>cola</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.3</version>
 	<packaging>jar</packaging>
 	<name>cola</name>
 	<description>Extensible, two-way data binding.</description>

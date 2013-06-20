@@ -3,7 +3,7 @@
 
 	<groupId>com.cujojs</groupId>
 	<artifactId>wire</artifactId>
-	<version>0.9.4</version>
+	<version>0.10.0</version>
 	<packaging>jar</packaging>
 	<name>wire</name>
 	<description>A light, fast, flexible Javascript IOC container.</description>

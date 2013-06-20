@@ -1,18 +1,18 @@
 # Connections
 
-1. [Connection Types](#connection-types)
+1. [Connection types](#connection-types)
 1. [Dependency Injection](#dependency-injection)
-1. [DOM Events](#dom-events)
+1. [DOM events](#dom-events)
 1. [Javascript to Javascript](#javascript-to-javascript)
 1. [Aspect Oriented Programming (AOP)](#aspect-oriented-programming-aop)
 1. [Promise-aware AOP](#promise-aware-aop)
-1. [Transform Connections](#transform-connections)
+1. [Transform connections](#transform-connections)
 
 Any software system or application consists of components that must collaborate to do the really useful stuff.  Once you've [created  components](./components.md), you can connect them together in various ways so that they can collaborate.
 
 Similarly to [factories](./concepts.md#factories) used to [create components](./components.md#factories), wire uses plugin [facets](./concepts.md#facets) to apply new behavior to components after they have been created.  There are several facets that are used to make connections between components.  For example, you can connect a Javascript controller to DOM events on an HTML view.
 
-# Connection Types
+# Connection types
 
 Wire itself, plus its bundled plugins support 4 types of connections:
 
@@ -27,7 +27,7 @@ Each of these type of connections can be useful in various situations, and picki
 
 **Plugins:** None needed
 
-You may tend not to think of method calls as a type of connection between components, but it's probably what you use the most.  With wire you can inject properties into Javascript components so that they can invoke methods directly on one another:
+You may tend not to think of method calls as a type of connection between components, but it's probably the one you use most often.  With wire you can inject properties into Javascript components so that they can invoke methods directly on one another:
 
 ```js
 define({
@@ -90,20 +90,20 @@ This example connects to the `click` events of links and buttons within a node t
 
 ```js
 define({
-	plugins: [
+	$plugins: [
 		{ module: 'wire/on' },
 		{ module: 'wire/dom' },
 	    // other plugins ...
 	],
 
 	// Get a reference to the first node with the class 'some-class'
-	domNode: { $ref: 'dom.first!.some-class' },
+	domNode: { $ref: 'first!.some-class' },
 
 	component1: {
 		create: // ...
 		on: {
 			// Whenever the user clicks a link or a <button>
-			// within domNode, call component1.doSomething 
+			// within domNode, call component1.doSomething
 			domNode: {
 				'click:a,button': 'doSomething'
 			}
@@ -116,7 +116,7 @@ Similarly, connecting to events within a DOM node created using the [render fact
 
 ```js
 define({
-	plugins: [
+	$plugins: [
 		{ module: 'wire/on' },
 		{ module: 'wire/dom' },
 		{ module: 'wire/dom/render' },
@@ -135,7 +135,7 @@ define({
 		create: // ...
 		on: {
 			// Whenever the user clicks a link or a <button>
-			// within domNode, call component1.doSomething 
+			// within domNode, call component1.doSomething
 			domNode: {
 				'click:a,button': 'doSomething'
 			}
@@ -148,7 +148,7 @@ When you have components that are DOM nodes, for example, those created using th
 
 ```js
 define({
-	plugins: [
+	$plugins: [
 		{ module: 'wire/on'},
 	    // other plugins ...
 	],
@@ -161,7 +161,7 @@ define({
 		},
 		on: {
 			// Whenever the user clicks a link or a <button>
-			// within domNode, call component1.doSomething 			
+			// within domNode, call component1.doSomething
 			'click:a,button': 'component1.doSomething'
 		}
 
@@ -173,6 +173,46 @@ define({
 });
 ```
 
+## Injecting the `on` facet as a function
+
+The function that powers the `on` facet may be [injected](concepts.md#dependency-inversion) into your components directly.  This allows you to use the exact same event handling code in your wire specs and your procedural code.  To obtain this function, use the `on!` [reference resolver](concepts.md#references).  The `on!` resolver will return a function that generates event handlers.
+
+When used without a reference identifier (the part after the "!"), the `on!` facet will return a function that takes a node, an event name, an event handler, and an optional CSS selector to target child nodes: `function on (node, event, handler, selector) {}`.  This function works similarly to jQuery's `on` and dojo's `on` functions.
+
+```js
+// injecting the `on!` facet in a wire spec
+myComponent: {
+	create: 'MyComponent',
+	properties: {
+		on: { $ref: 'on!' }
+	},
+	init: 'init'
+}
+
+// using the `on!` facet in myComponent
+MyComponent.prototype.init = function () {
+	// listen for mouseover events on all A elements with the 'jit' class
+	this.on(document, 'mouseover', this.onMouseOver.bind(this), 'a.jit');
+}
+```
+
+When used with a event-selector string as the reference identifier, the `on!` resolver will return a function that takes fewer parameters.  You just supply an optional node parameter (default is the document) and an event handler.  The event names and the CSS selector are pre-configured and are automatically applied.
+
+```js
+// injecting the `on!` facet in a wire spec
+myComponent: {
+	create: 'MyComponent',
+	properties: {
+		on: { $ref: 'on!mouseover:a.jit' }
+	}
+}
+
+// using the `on!` facet inside myComponent
+// the mouseover event and the 'a.jit' selector have been pre-configured
+// document is the default, so it is not required
+this.on(/* document, */ this.onMouseOver.bind(this));
+```
+
 # Javascript to Javascript
 
 **Plugin:** wire/connect, wire/dojo/events (uses dojo.connect)
@@ -181,7 +221,7 @@ These plugins allow you to make simple Javascript to Javascript connections.  Yo
 
 ```js
 define({
-	plugins: [
+	$plugins: [
 		{ module: 'wire/connect'},
 	    // other plugins ...
 	],
@@ -206,7 +246,7 @@ Connections can be made in either direction.  For example, the following example
 
 ```js
 define({
-	plugins: [
+	$plugins: [
 		{ module: 'wire/connect'},
 	    // other plugins ...
 	],
@@ -236,7 +276,7 @@ The wire/aop plugin lets you make Javascript to Javascript connections similar t
 ```js
 define({
 	// Include the wire/aop plugin
-	plugins: [
+	$plugins: [
 	    { module: 'wire/aop' },
 	    // other plugins ...
 	],
@@ -304,7 +344,7 @@ Wire uses [when](http://github.com/cujojs/when) to provide *promise-aware* AOP a
 ```js
 define({
 	// Include the wire/aop plugin
-	plugins: [
+	$plugins: [
 	    { module: 'wire/aop' },
 	    // other plugins ...
 	],
@@ -318,9 +358,9 @@ define({
 
 	    // Promise-aware advice types
 	    afterFulfilling: {
-	        // component1.doSomethingAfterReturning will be invoked 
-	        // after the promise returned by component2.doSomething 
-	        // resolves successfully (but not if it rejects). The 
+	        // component1.doSomethingAfterReturning will be invoked
+	        // after the promise returned by component2.doSomething
+	        // resolves successfully (but not if it rejects). The
 	        // resolution value of the promise will be passed to
 	        // component1.doSomethingAftefResolving
 	        doSomething: 'component1.doSomethingAftefResolving'
@@ -329,7 +369,7 @@ define({
 	    afterRejecting: {
 	        // component1.handleError will be invoked after the
 	        // promise returned by component2.doSomething
-	        // rejects (but not if it resolves successfully). The 
+	        // rejects (but not if it resolves successfully). The
 	        // rejection reason of the promise will be passed to
 	        // component1.handleError
 	        doSomething: 'component1.handleError'
@@ -346,7 +386,7 @@ define({
 	}
 })
 ```
-# Transform Connections
+# Transform connections
 
 Connections can transform the data that flows through them.  This allows you to write components without including data transformation logic.  They can expect to receive only the data format they really need, and you use a connection to transform data into the expected format.
 
@@ -362,7 +402,7 @@ Imagine a simple shopping cart controller that has an `addItem` method that shou
 // wire spec
 // A DOM container in which we'll attach events.
 // See "on" in controller
-itemList: { $ref: 'dom.first!.item-list'},
+itemList: { $ref: 'first!.item-list'},
 
 // A function that takes a DOM event and returns the
 // item to add to the shopping cart. This encapsulates
@@ -443,7 +483,7 @@ Finally, we can use a function pipeline to transform the DOM event into an item,
 
 This removes any knowledge of the DOM event and DOM structure from the Controller.  It only needs to know how to add the item.
 
-    itemList: { $ref: 'dom.first!.item-list'},
+    itemList: { $ref: 'first!.item-list'},
 
     findItem: { module: 'myApp/data/findItemFromEvent' }
 

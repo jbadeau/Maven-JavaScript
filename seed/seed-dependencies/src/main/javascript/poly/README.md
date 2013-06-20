@@ -1,7 +1,6 @@
 Code to modern standards. Run everywhere.
 =========
 
-version: 0.5.1
 License: MIT
 
 poly.js is the a collection of AMD modules that shim (aka "polyfill")
@@ -14,6 +13,8 @@ poly.js is unique amongst ES5-ish shims because it:
 * is configurable to suit your code
 * can be minified using a has-aware optimizer
 
+Note: poly/strict has been deprecated. See below.
+
 Support
 ---
 
@@ -21,8 +22,21 @@ Issues: https://github.com/cujojs/poly/issues
 
 Discussion: https://groups.google.com/d/forum/cujojs
 
+
+What's new
+---
+
+* 0.5.2
+	* Implement setImmediate/clearImmediate as a temporary, non-standard method
+	  for performant task queueing.
+	* New poly/es5 and poly/es5-strict modules. poly/strict is deprecated.
+	* Use @kitcambridge's JSON3 instead of JSON2
+	* Date shim now keeps properties on Date constructor and keeps the name
+	  of the constructor "Date" (was previously "_Date")
+	* Fix bugs in Object shims in IE 6-8.
+
 Features
-----
+---
 
 poly augments browsers with all of the following features:
 
@@ -48,6 +62,15 @@ poly/json:
 ---
 
 * (global) JSON
+
+poly/setImmediate:
+---
+
+* (global) setImmediate
+* (global) clearImmediate
+
+Note: setImmediate is not expected to become standardized, but is included
+here as an interim solution as a performant next-turn implementation.
 
 poly/object:
 ---
@@ -80,6 +103,31 @@ or incomplete shims to fail silently.  poly/all works the same way.  However,
 poly/strict sets `failIfShimmed` so that poly/object will throw
 exceptions for some functions.  (see below)
 
+Object.getPrototypeOf works in all situations except when using raw
+prototypal inheritance in IE6-8.  This is due to a well-known IE bug that
+clobbers the constructor property on objects whose constructor has a prototype.
+
+By "raw", we mean the following:
+
+```js
+function MyClass () {}
+MyClass.prototype = { foo: 42 };
+var obj = new MyClass();
+console.log(obj.constructor == MyClass); // false in IE6-8
+```
+
+The workaround is to set the constructor explicitly:
+
+```js
+function MyClass () {}
+MyClass.prototype = { foo: 42, constructor: MyClass };
+var obj = new MyClass();
+console.log(obj.constructor == MyClass); // true everywhere!!!!!
+```
+
+Most inheritance helper libs, including John Resig's Simple Inheritance, dojo,
+and prototype.js already do this for you.
+
 poly/string:
 ---
 
@@ -108,10 +156,21 @@ create your own version of poly/all to be stricter.
 
 The "poly" main module will load poly/all.
 
+poly/es5:
+---
+
+This *convenience module* loads and applies all es5 shims.  Shims, such as
+poly/setImmediate are not included.
+
 poly/strict:
 ---
 
-This *convenience module* loads and applies all shims, but ensures that
+This is module is deprecated.  Please use poly/es5-strict.
+
+poly/es5-strict:
+---
+
+This *convenience module* loads and applies all es5 shims, but ensures that
 whitespace characters comply with ES5 specs (many browsers don't do this)
 and fails loudly for the following object shims that can't reasonably
 be shimmed to comply with ES5:
@@ -261,8 +320,8 @@ if (typeof "".trim != 'function') {
 curl({ preloads: preloads });
 ```
 
-JSON2
+JSON3
 ===
 
-JSON support via Douglas Crockford's JSON2 lib at:
-https://github.com/douglascrockford/JSON-js.git
+JSON support via Kit Cambridge's JSON3 lib at:
+https://github.com/bestiejs/json3.git

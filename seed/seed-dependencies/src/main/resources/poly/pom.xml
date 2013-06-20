@@ -3,7 +3,7 @@
 
 	<groupId>com.cujojs</groupId>
 	<artifactId>poly</artifactId>
-	<version>0.5.1</version>
+	<version>0.5.2</version>
 	<packaging>jar</packaging>
 	<name>poly</name>
 	<description>Small, fast, awesome. The only ES5-ish set of polyfills (shims) you can mix-and-match because they're individual AMD modules.</description>
