@@ -13,7 +13,7 @@ define({ // Wire spec
 	view: {
 		render: {
 			template: { module: 'text!seed/template.html' },
-			replace: { module: 'i18n!seed/strings.js' }
+			replace: { module: 'i18n!seed/nls/strings' }
 		},
 		insert: { last: 'root' }
 	},

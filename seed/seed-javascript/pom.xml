@@ -17,11 +17,6 @@
 		<!-- cujojs -->
 		<dependency>
 			<groupId>com.cujojs</groupId>
-			<artifactId>curl</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.cujojs</groupId>
 			<artifactId>wire</artifactId>
 			<classifier>js</classifier>
 		</dependency>
@@ -78,9 +73,11 @@
 		<resources>
 			<resource>
 				<directory>src/main/javascript</directory>
+				<targetPath>META-INF/resources</targetPath>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
+				<targetPath>META-INF/resources</targetPath>
 			</resource>
 		</resources>
 		<testSourceDirectory>src/test/javascript</testSourceDirectory>

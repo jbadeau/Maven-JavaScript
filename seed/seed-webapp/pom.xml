@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -19,6 +20,11 @@
 			<artifactId>seed-javascript</artifactId>
 			<classifier>js</classifier>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.requirejs</groupId>
+			<artifactId>r</artifactId>
+			<classifier>js</classifier>
 		</dependency>
 		<!-- Spring -->
 		<dependency>
@@ -211,6 +217,93 @@
 						</exclusions>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copyApp</id>
+						<phase>initialize</phase>
+						<configuration>
+							<target name="copyApp">
+								<copy todir="${project.build.directory}/requirejs-build">
+									<fileset dir="${basedir}/src/main/webapp/app" />
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>copyMinFile</id>
+						<phase>prepare-package</phase>
+						<configuration>
+							<target name="copyMinFile">
+								<copy file="${project.build.directory}/requirejs-build/run.min.js" todir="${project.build.directory}/m2e-wtp/web-resources/app" />
+								<copy file="${project.build.directory}/requirejs-build/run.min.js" todir="${project.build.directory}/${project.artifactId}-${project.version}/app" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpackJavascript</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/requirejs-build/lib</outputDirectory>
+							<includeClassifiers>js</includeClassifiers>
+							<type>jar</type>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.mcheely</groupId>
+				<artifactId>requirejs-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>optimizeJavascript</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>optimize</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- optional path to a nodejs executable -->
+					<nodeExecutable>
+						D:\Data\RAD\Shared\Programs\node\node.exe
+					</nodeExecutable>
+					<!-- path to optimizer json config file -->
+					<configFile>
+						${project.build.directory}/requirejs-build/build.js
+					</configFile>
+					<!-- optional path to optimizer executable -->
+					<optimizerFile>
+						${project.build.directory}/requirejs-build/lib/META-INF/resources/r/dist/r.js
+					</optimizerFile>
+					<!-- Whether or not to process configFile with maven filters. If you use this option, some options in your configFile 
+						must resolve to absolute paths (see below) -->
+					<filterConfig>
+						false
+					</filterConfig>
+					<!-- Skip requirejs optimization if true -->
+					<skip>
+						false
+					</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
