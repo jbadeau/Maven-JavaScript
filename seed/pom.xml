@@ -228,17 +228,52 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!--repositories> <repository> <id>pentaho</id> <url>http://repository.pentaho.org/artifactory/pentaho/</url> <name>Pentaho 
-		Repository</name> </repository> <repository> <id>pentaho-thirdparty</id> <url>http://repository.pentaho.org/artifactory/third-party/</url> 
-		<name>Pentaho Third Party Repository</name> </repository> <repository> <id>desarrollo-agil</id> <url>http://demo.desarrolloagil.es/nexus/content/repositories/releases/</url> 
-		</repository> </repositories -->
+	<repositories>
+		<repository>
+			<id>pentaho</id>
+			<url>http://repository.pentaho.org/artifactory/pentaho/</url>
+			<name>Pentaho 
+		Repository</name>
+		</repository>
+		<repository>
+			<id>pentaho-thirdparty</id>
+			<url>http://repository.pentaho.org/artifactory/third-party/</url>
+			<name>Pentaho Third Party Repository</name>
+		</repository>
+		<repository>
+			<id>desarrollo-agil</id>
+			<url>http://demo.desarrolloagil.es/nexus/content/repositories/releases/</url>
+		</repository>
+	</repositories>
 
-	<!--pluginRepositories> <pluginRepository> <id>moyrax-releases</id> <name>Moyrax Artifactory</name> <url>http://www.moyrax.com:8081/nexus/content/repositories/moyrax-releases/</url> 
-		<layout>default</layout> <snapshots> <enabled>false</enabled> </snapshots> <releases> <updatePolicy>never</updatePolicy> 
-		</releases> </pluginRepository> <pluginRepository> <id>pentaho</id> <url>http://repository.pentaho.org/artifactory/pentaho/</url> 
-		<name>Pentaho Repository</name> </pluginRepository> <pluginRepository> <id>pentaho-thirdparty</id> <url>http://repository.pentaho.org/artifactory/third-party/</url> 
-		<name>Pentaho Third Party Repository</name> </pluginRepository> <pluginRepository> <id>desarrollo-agil</id> <url>http://demo.desarrolloagil.es/nexus/content/repositories/releases/</url> 
-		</pluginRepository> </pluginRepositories -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>moyrax-releases</id>
+			<name>Moyrax Artifactory</name>
+			<url>http://www.moyrax.com:8081/nexus/content/repositories/moyrax-releases/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>pentaho</id>
+			<url>http://repository.pentaho.org/artifactory/pentaho/</url>
+			<name>Pentaho Repository</name>
+		</pluginRepository>
+		<pluginRepository>
+			<id>pentaho-thirdparty</id>
+			<url>http://repository.pentaho.org/artifactory/third-party/</url>
+			<name>Pentaho Third Party Repository</name>
+		</pluginRepository>
+		<pluginRepository>
+			<id>desarrollo-agil</id>
+			<url>http://demo.desarrolloagil.es/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<pluginManagement>
@@ -288,7 +323,8 @@
 					<artifactId>maven-jetty-plugin</artifactId>
 					<version>6.1.26</version>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
