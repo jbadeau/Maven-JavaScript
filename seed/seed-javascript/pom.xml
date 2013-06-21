@@ -17,12 +17,12 @@
 		<!-- cujojs -->
 		<dependency>
 			<groupId>com.cujojs</groupId>
-			<artifactId>wire</artifactId>
+			<artifactId>cola</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
 			<groupId>com.cujojs</groupId>
-			<artifactId>cola</artifactId>
+			<artifactId>meld</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
@@ -32,38 +32,17 @@
 		</dependency>
 		<dependency>
 			<groupId>com.cujojs</groupId>
-			<artifactId>rest</artifactId>
+			<artifactId>when</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.google</groupId>
-			<artifactId>polymer</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.zurb</groupId>
-			<artifactId>foundation</artifactId>
+			<groupId>com.cujojs</groupId>
+			<artifactId>wire</artifactId>
 			<classifier>js</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.requirejs</groupId>
 			<artifactId>require</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.jquery</groupId>
-			<artifactId>jquery</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.jtypes</groupId>
-			<artifactId>jtypes</artifactId>
-			<classifier>js</classifier>
-		</dependency>
-		<!-- unit test -->
-		<dependency>
-			<groupId>com.github</groupId>
-			<artifactId>jasmine-jquery</artifactId>
 			<classifier>js</classifier>
 			<scope>test</scope>
 		</dependency>

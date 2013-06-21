@@ -36,22 +36,13 @@
 
 	<!-- list of JavaScript dependencies -->
 	<property name="list">
-		foundation,
-		jquery,
-		require,
-		r,
-		jtypes,
-		curl,
-		wire,
 		cola,
-		when,
 		meld,
 		poly,
-		rest,
-		cram,
-		polymer,
-		jasmine,
-		jasmine-jquery
+		when,
+		wire,
+		r,
+		require
 	</property>
 
 	<!-- =================================================================== -->
