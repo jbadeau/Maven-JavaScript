@@ -13,13 +13,11 @@
 	<name>Seed Dependencies</name>
 	<description>Seed JavaScript Dependencies module.</description>
 
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>install-dependencies</id>
