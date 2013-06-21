@@ -13,6 +13,7 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 * Run unit tests without unpacking dependencies
 * Integration of GEB (WebDriver) for automated browser testing
 * Run web application without unpacking dependencies
+* Build optimization
 
 ## Prerequisites
 * Eclipse 4.2.1 (Juno SR2)
@@ -25,5 +26,4 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 ## Comming Soon...
 * Integration of code coverage
 * Integration of code metrics
-* Integration of build optimization
 * Maven archetype
