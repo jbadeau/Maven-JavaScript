@@ -3,10 +3,10 @@
  See: http://www.gebish.org/manual/current/configuration.html
  */
 
-import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
 
-// See: http://code.google.com/p/selenium/wiki/HtmlUnitDriver
+// See: https://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
 
 environments {
