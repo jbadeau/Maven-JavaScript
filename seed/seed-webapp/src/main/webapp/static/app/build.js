@@ -6,10 +6,10 @@
 
 	optimize : 'none',
 
-	mainConfigFile : 'config.js',
+	mainConfigFile : 'main.js',
 
-	name : 'run',
+	name : 'main',
 
-	out : 'run.min.js'
+	out : 'main.min.js'
 
 })

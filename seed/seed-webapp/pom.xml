@@ -255,8 +255,8 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<target name="copyMinFile">
-								<copy file="${project.build.directory}/requirejs-build/static/app/run.min.js" todir="${project.build.directory}/m2e-wtp/web-resources/static/app" />
-								<copy file="${project.build.directory}/requirejs-build/static/app/run.min.js" todir="${project.build.directory}/${project.artifactId}-${project.version}/static/app" />
+								<copy file="${project.build.directory}/requirejs-build/static/app/main.min.js" todir="${project.build.directory}/m2e-wtp/web-resources/static/app" />
+								<copy file="${project.build.directory}/requirejs-build/static/app/main.min.js" todir="${project.build.directory}/${project.build.finalName}/static/app" />
 							</target>
 						</configuration>
 						<goals>
@@ -297,9 +297,7 @@
 				</executions>
 				<configuration>
 					<!-- optional path to a nodejs executable -->
-					<nodeExecutable>
-						D:\Data\RAD\Shared\Programs\node\node.exe
-					</nodeExecutable>
+					<nodeExecutable></nodeExecutable>
 					<!-- path to optimizer json config file -->
 					<configFile>
 						${project.build.directory}/requirejs-build/static/app/build.js

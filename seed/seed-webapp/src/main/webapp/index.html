@@ -10,14 +10,12 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
-    <script type="text/javascript" src="static/lib/require/require.js"></script>
-    <script type="text/javascript" src="static/app/config.js"></script>
     <script type="text/javascript">
     if (window.location.search.indexOf("dev=true") != -1) {
-		document.write('<script type="text/javascript" src="static/app/run.js"></sc' + 'ript>');
+    	document.write('<script type="text/javascript" src="static/lib/require/require.js" data-main="static/app/main"></sc' + 'ript>');
 	}
     else {
-    	document.write('<script type="text/javascript" src="static/app/run.min.js"></sc' + 'ript>');
+    	document.write('<script type="text/javascript" src="static/lib/require/require.js" data-main="static/app/main.min"></sc' + 'ript>');
     }
     </script>
 </head>

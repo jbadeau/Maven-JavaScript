@@ -1,1 +1,0 @@
-requirejs([ 'poly/all', 'wire!seed/main' ]);
