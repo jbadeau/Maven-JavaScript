@@ -8,7 +8,7 @@
 
 	mainConfigFile : 'main.js',
 	
-	// TODO why is domReady plugin not
+	// TODO why are wire and domReady not included in the build automatically? Defect?
 	include : [ 'wire', 'domReady' ],
 
 	name : 'main',
