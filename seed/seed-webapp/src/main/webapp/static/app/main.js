@@ -29,4 +29,4 @@ requirejs.config({
 });
 
 // wire must be declared do to a r.js bug
-requirejs([ 'poly/all', 'wire', 'wire!seed/run' ]);
+requirejs([ 'poly/all', 'wire!seed/run' ]);
