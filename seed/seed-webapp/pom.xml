@@ -227,9 +227,23 @@
 						<phase>initialize</phase>
 						<configuration>
 							<target name="copyApp">
-								<copy todir="${project.build.directory}/requirejs-build">
-									<fileset dir="${basedir}/src/main/webapp/app" />
+								<copy todir="${project.build.directory}/requirejs-build/static/app">
+									<fileset dir="${basedir}/src/main/webapp/static/app" />
 								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>moveLibs</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<target name="moveLibs">
+								<move todir="${project.build.directory}/requirejs-build/static/lib" >
+									<fileset dir="${project.build.directory}/requirejs-build/tmp/META-INF/resources" />
+								</move>
 							</target>
 						</configuration>
 						<goals>
@@ -241,8 +255,8 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<target name="copyMinFile">
-								<copy file="${project.build.directory}/requirejs-build/run.min.js" todir="${project.build.directory}/m2e-wtp/web-resources/app" />
-								<copy file="${project.build.directory}/requirejs-build/run.min.js" todir="${project.build.directory}/${project.artifactId}-${project.version}/app" />
+								<copy file="${project.build.directory}/requirejs-build/static/app/run.min.js" todir="${project.build.directory}/m2e-wtp/web-resources/static/app" />
+								<copy file="${project.build.directory}/requirejs-build/static/app/run.min.js" todir="${project.build.directory}/${project.artifactId}-${project.version}/static/app" />
 							</target>
 						</configuration>
 						<goals>
@@ -262,7 +276,7 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/requirejs-build/lib</outputDirectory>
+							<outputDirectory>${project.build.directory}/requirejs-build/tmp</outputDirectory>
 							<includeClassifiers>js</includeClassifiers>
 							<type>jar</type>
 						</configuration>
@@ -275,7 +289,7 @@
 				<executions>
 					<execution>
 						<id>optimizeJavascript</id>
-						<phase>generate-sources</phase>
+						<phase>process-sources</phase>
 						<goals>
 							<goal>optimize</goal>
 						</goals>
@@ -288,11 +302,11 @@
 					</nodeExecutable>
 					<!-- path to optimizer json config file -->
 					<configFile>
-						${project.build.directory}/requirejs-build/build.js
+						${project.build.directory}/requirejs-build/static/app/build.js
 					</configFile>
 					<!-- optional path to optimizer executable -->
 					<optimizerFile>
-						${project.build.directory}/requirejs-build/lib/META-INF/resources/r/dist/r.js
+						${project.build.directory}/requirejs-build/static/lib/r/dist/r.js
 					</optimizerFile>
 					<!-- Whether or not to process configFile with maven filters. If you use this option, some options in your configFile 
 						must resolve to absolute paths (see below) -->
