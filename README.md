@@ -23,6 +23,11 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 * m2e - Maven Integration for Eclipse
 * m2e-wtp - Maven Integration for WTP (Incubation)
 
+## Getting Started
+* Clone repository
+* Run mvn clean install on seed project
+* Point your browser to http://localhost:8080/seed-webapp/index.html or http://localhost:8080/seed-webapp/index.html?dev=true
+
 ## Comming Soon...
 * Integration of code coverage
 * Integration of code metrics
