@@ -17,7 +17,7 @@ This is an example project for working with Eclipse, Maven and JavaScript. One o
 
 ## Prerequisites
 * Eclipse 4.2.1 (Juno SR2)
-* Groovy Compiler 2.0 Feature
+* Groovy Compiler 1.8.6 Feature
 * Groovy-Eclipse Feature
 * Groovy-Eclipse M2E integration
 * m2e - Maven Integration for Eclipse
