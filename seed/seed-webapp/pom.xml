@@ -14,7 +14,7 @@
 	<description>Seed Web-Application module.</description>
 
 	<dependencies>
-		<!-- seed -->
+		<!-- javascript -->
 		<dependency>
 			<groupId>com.cujojs</groupId>
 			<artifactId>seed-javascript</artifactId>
