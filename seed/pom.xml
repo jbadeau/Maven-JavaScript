@@ -26,7 +26,7 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- cujojs -->
+			<!-- javascript -->
 			<dependency>
 				<groupId>com.cujojs</groupId>
 				<artifactId>cola</artifactId>
@@ -75,7 +75,6 @@
 				<artifactId>spring-context</artifactId>
 				<version>${spring-version}</version>
 				<exclusions>
-					<!-- exclude commons logging in favor of slf4j -->
 					<exclusion>
 						<groupId>commons-logging</groupId>
 						<artifactId>commons-logging</artifactId>
