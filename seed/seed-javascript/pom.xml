@@ -60,7 +60,17 @@
 				<targetPath>META-INF/resources</targetPath>
 			</resource>
 		</resources>
-		<testSourceDirectory>src/test/javascript</testSourceDirectory>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/javascript</directory>
+				<targetPath>META-INF/resources</targetPath>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<targetPath>META-INF/resources</targetPath>
+			</testResource>
+		</testResources>
 
 		<plugins>
 			<plugin>

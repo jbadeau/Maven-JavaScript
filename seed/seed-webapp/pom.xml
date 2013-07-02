@@ -251,10 +251,10 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<target name="moveLibs">
-								<move todir="${project.build.directory}/requirejs-build/static/lib">
+								<copy todir="${project.build.directory}/requirejs-build/static/lib">
 									<fileset
 										dir="${project.build.directory}/requirejs-build/tmp/META-INF/resources" />
-								</move>
+								</copy>
 							</target>
 						</configuration>
 						<goals>
